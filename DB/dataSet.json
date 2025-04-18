@@ -1,0 +1,197 @@
+{
+    "perfumes": [
+      {
+        "id": 1,
+        "name": "Chanel No. 5",
+        "brand": "Chanel",
+        "gender": "Women",
+        "price": 135.00,
+        "size": "100ml",
+        "notes": "Aldehydes, Ylang-Ylang, Neroli, Jasmine, Rose, Sandalwood, Vanilla",
+        "description": "The timeless classic floral-aldehyde fragrance created by Ernest Beaux in 1921.",
+        "image": "/img/3145891057980_.jpg",
+        "rating": 4.8
+      },
+      {
+        "id": 2,
+        "name": "Sauvage",
+        "brand": "Dior",
+        "gender": "Men",
+        "price": 98.00,
+        "size": "100ml",
+        "notes": "Bergamot, Pepper, Lavender, Pink Pepper, Vetiver, Patchouli, Ambroxan",
+        "description": "A fresh, spicy, and woody fragrance that embodies wildness and elegance.",
+        "image": "/img/pm009116603021_1.jpg",
+        "rating": 4.7
+      },
+      {
+        "id": 3,
+        "name": "Black Opium",
+        "brand": "Yves Saint Laurent",
+        "gender": "Women",
+        "price": 85.00,
+        "size": "90ml",
+        "notes": "Coffee, Vanilla, White Flowers, Pear, Pink Pepper, Orange Blossom",
+        "description": "A bold and addictive gourmand floral fragrance with coffee and vanilla accords.",
+        "image": "/img/89750916_2572628069731122_2469222895138635776_o.jpg",
+        "rating": 4.6
+      },
+      {
+        "id": 4,
+        "name": "Acqua di Gio",
+        "brand": "Giorgio Armani",
+        "gender": "Men",
+        "price": 92.00,
+        "size": "100ml",
+        "notes": "Marine Notes, Bergamot, Neroli, Jasmine, Rosemary, Patchouli, Amber",
+        "description": "A fresh aquatic fragrance inspired by the sea, sun and earth of Pantelleria.",
+        "image": "/img/download.jpg",
+        "rating": 4.5
+      },
+      {
+        "id": 5,
+        "name": "La Vie Est Belle",
+        "brand": "Lancôme",
+        "gender": "Women",
+        "price": 105.00,
+        "size": "100ml",
+        "notes": "Iris, Jasmine, Orange Blossom, Praline, Vanilla, Patchouli, Tonka Bean",
+        "description": "A gourmand floral fragrance celebrating happiness and femininity.",
+        "image": "/img/download (1).jpg",
+        "rating": 4.7
+      },
+      {
+        "id": 6,
+        "name": "Bleu de Chanel",
+        "brand": "Chanel",
+        "gender": "Men",
+        "price": 120.00,
+        "size": "100ml",
+        "notes": "Citrus, Mint, Pink Pepper, Ginger, Nutmeg, Sandalwood, Cedar, Amber",
+        "description": "A woody aromatic fragrance that represents freedom and boldness.",
+        "image": "/img/download (2).jpg",
+        "rating": 4.8
+      },
+      {
+        "id": 7,
+        "name": "Light Blue",
+        "brand": "Dolce & Gabbana",
+        "gender": "Women",
+        "price": 78.00,
+        "size": "100ml",
+        "notes": "Sicilian Lemon, Apple, Cedar, Bamboo, Jasmine, White Rose, Amber",
+        "description": "A fresh and vibrant Mediterranean-inspired fragrance.",
+        "image": "/img/413FhIM1g7L.jpg",
+        "rating": 4.4
+      },
+      {
+        "id": 8,
+        "name": "One Million",
+        "brand": "Paco Rabanne",
+        "gender": "Men",
+        "price": 88.00,
+        "size": "100ml",
+        "notes": "Blood Mandarin, Grapefruit, Mint, Rose, Cinnamon, Spice Notes, Leather, Amber",
+        "description": "A bold, spicy, and woody fragrance with a sparkling freshness.",
+        "image": "/img/download (13).jpg",
+        "rating": 4.3
+      },
+      {
+        "id": 9,
+        "name": "Tom Ford Black Orchid",
+        "brand": "Tom Ford",
+        "gender": "Unisex",
+        "price": 160.00,
+        "size": "100ml",
+        "notes": "Black Truffle, Ylang-Ylang, Bergamot, Black Currant, Orchid, Spice Notes, Patchouli",
+        "description": "A luxurious and sensual fragrance with rich floral and dark notes.",
+        "image": "/img/download (4).jpg",
+        "rating": 4.9
+      },
+      {
+        "id": 10,
+        "name": "Creed Aventus",
+        "brand": "Creed",
+        "gender": "Unisex",
+        "price": 300.00,
+        "size": "100ml",
+        "notes": "Bergamot, Black Currant, Pineapple, Apple, Birch, Patchouli, Musk",
+        "description": "A sophisticated and fruity fragrance with woody undertones, perfect for all.",
+        "image": "/img/download (5).jpg",
+        "rating": 4.9
+      },
+      {
+        "id": 11,
+        "name": "Le Labo Santal 33",
+        "brand": "Le Labo",
+        "gender": "Unisex",
+        "price": 180.00,
+        "size": "100ml",
+        "notes": "Sandalwood, Cedarwood, Cardamom, Iris, Violet, Ambroxan",
+        "description": "A unisex fragrance with a smoky, woody, and spicy blend.",
+        "image": "/img/download (6).jpg",
+        "rating": 4.8
+      },
+      {
+        "id": 12,
+        "name": "Byredo Gypsy Water",
+        "brand": "Byredo",
+        "gender": "Unisex",
+        "price": 170.00,
+        "size": "100ml",
+        "notes": "Juniper Berries, Lemon, Pepper, Vanilla, Sandalwood, Amber",
+        "description": "A fresh, woody fragrance with citrus and peppery notes.",
+        "image": "/img/download (7).jpg",
+        "rating": 4.7
+      },
+      {
+        "id": 13,
+        "name": "Maison Francis Kurkdjian Baccarat Rouge 540",
+        "brand": "Maison Francis Kurkdjian",
+        "gender": "Unisex",
+        "price": 275.00,
+        "size": "70ml",
+        "notes": "Jasmine, Saffron, Cedarwood, Ambergris, Fir Resin",
+        "description": "A rich and complex fragrance with floral and resinous undertones.",
+        "image": "/img/download (9).jpg",
+        "rating": 4.9
+      },
+      {
+        "id": 14,
+        "name": "Diptyque Philosykos",
+        "brand": "Diptyque",
+        "gender": "Unisex",
+        "price": 120.00,
+        "size": "100ml",
+        "notes": "Fig Tree, Fig Leaves, White Cedarwood, Green Notes",
+        "description": "A fresh and green fragrance that evokes the essence of a fig tree.",
+        "image": "/img/download (8).jpg",
+        "rating": 4.8
+      },
+      {
+        "id": 15,
+        "name": "Jo Malone London Wood Sage & Sea Salt",
+        "brand": "Jo Malone",
+        "gender": "Unisex",
+        "price": 135.00,
+        "size": "100ml",
+        "notes": "Ambrette Seed, Red Algae, Grapefruit, Sea Salt, Sage",
+        "description": "A fresh, oceanic fragrance that evokes the spirit of the sea.",
+        "image": "/img/download (12).jpg",
+        "rating": 4.7
+      },
+      {
+        "id": 16,
+        "name": "Acqua di Parma Colonia",
+        "brand": "Acqua di Parma",
+        "gender": "Unisex",
+        "price": 220.00,
+        "size": "100ml",
+        "notes": "Citrus Fruits, Lavender, Rosemary, Verbena, Patchouli",
+        "description": "A fresh and elegant citrus-based fragrance with a hint of florals.",
+        "image": "/img/download (11).jpg",
+        "rating": 4.8
+      }
+    ]
+  }
+  

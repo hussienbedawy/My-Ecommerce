@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My E-commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./style/main.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-content">
+                <div class="header-text">
+                    Free shipping for all orders over $50
+                </div>
+                <div class="header-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container header-main-content">
+            <a href="index.html" class="logo">My<span>E-commerce</span></a>
+
+            <!--=============== Nav =================-->
+            <ul class="main-menu">
+                <li><a href="register.html">Registration</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="./categories.html">Categories</a></li>
+            </ul>
+
+            <!--================= Icons: Search + Login/Logout ================= -->
+            <div class="header-icons">
+                <!-- Search -->
+                <div style="position: relative;">
+                    <input id="searchInput" type="text" placeholder="Search product/game..."
+                        style="padding: 6px 30px 6px 12px; border: 1px solid #ccc; border-radius: 20px;">
+                    <button onclick="searchProduct()"
+                        style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-search" style="color: #e65540;"></i>
+                    </button>
+                </div>
+
+                <!--================= Auth Buttons =================-->
+                <button id="loginBtn" onclick="toggleLogin(true)"
+                    style="margin-left: 15px; background: none; border: none; cursor: pointer;"><i
+                        class="fas fa-sign-in-alt"></i> Login</button>
+                <button id="logoutBtn" onclick="toggleLogin(false)"
+                    style="margin-left: 10px; display: none; background: none; border: none; cursor: pointer;"><i
+                        class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+
+    </header>
+    <!--================= Slider Section =================-->
+    <section class="slider">
+        <div class="slide active"
+            style="background-image: url('./img/female.jpg');">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="#">Shop Now</a>
+        </div>
+        <div class="slide"
+            style="background-image: url('./img/male.jpg');">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="#">Explore</a>
+        </div>
+        <div class="slide"
+            style="background-image: url('./img/unisex.jpg');">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="#">Get Offer</a>
+        </div>
+        <div class="slider-arrows">
+            <div class="arrow" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
+            <div class="arrow" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
+        </div>
+        <div class="slider-nav">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+
+    <!--================= Categories Section =================-->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shop by Category</h2>
+                <p>Browse our wide selection of products by category</p>
+                <h3><span data-count="6">0</span> Categories Available</h3>
+            </div>
+            <div class="categories-grid">
+                <div class="category-item">
+                    <img src="./img/right-sided perfume bottle on a white background, 300px height, soft lighting, elegant design for women (1).jpg"
+                        alt="Women">
+                    <div class="category-overlay">
+                        <h3>Female</h3>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="./img/right-sided perfume bottle on a white background, 300px height, soft lighting, elegant design for men.jpg"
+                        alt="Men">
+                    <div class="category-overlay">
+                        <h3>Male</h3>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="./img/right-sided perfume bottle on a white background, 300px height, soft lighting, elegant design for unisex.jpg"
+                        alt="Accessories">
+                    <div class="category-overlay">
+                        <h3>Unisex</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--================= Banner Section =================-->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <div class="banner-pattern"></div>
+                <a href="#" class="shop-now-btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+    <!--================= Products Section =================-->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Perfumes</h2>
+                <p>Our premium collection of luxury fragrances</p>
+            </div>
+            <div class="product-tabs">
+                <button class="tab-btn active">All</button>
+                <button class="tab-btn">Women</button>
+                <button class="tab-btn">Men</button>
+                <button class="tab-btn">Unisex</button>
+            </div>
+            <!--================= Products cards =================-->
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://preview.colorlib.com/theme/cozastore/images/product-01.jpg" alt="Product">
+                        <span class="product-badge">New</span>
+                        <div class="product-actions">
+                            <a href="#" class="action-btn"><i class="fas fa-heart"></i></a>
+                            <a href="#" class="action-btn"><i class="fas fa-shopping-cart"></i></a>
+                            <a href="#" class="action-btn"><i class="fas fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Women</div>
+                        <h3 class="product-title">Esprit Ruffle Shirt</h3>
+                        <div class="product-price">$16.64 <span class="old-price">$20.00</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!--================= Feeds Section =================-->
+    <section class="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Newest Feeds</h2>
+                <p>Stay updated with our latest special collection</p>
+            </div>
+            <div class="blog-grid">
+                <!--================= Blog Post 1 =================-->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="./img/o.VpFDOKQO846.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">April 16, 2025</div>
+                        <h3 class="blog-title">Black Friday Guide: Best Sales & Discount Codes</h3>
+                        <p class="blog-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                            scelerisque aliquam odio et faucibus.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="./img/perfumebaazaar_abottleofBlueDeChanelfloatinginthewater.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">April 16, 2025</div>
+                        <h3 class="blog-title">See our new collection of perfumes</h3>
+                        <p class="blog-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                            scelerisque aliquam odio et faucibus.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="./img/3_0c067b71-8b53-4d27-bba7-434f85946f4c.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">April 16, 2025</div>
+                        <h3 class="blog-title">Special section for unisex and sexy perfumes</h3>
+                        <p class="blog-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                            scelerisque aliquam odio et faucibus.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Do you want to be a golden member -->
+ <!-- Get E-mail updates about our latest products and special offers customized only for you. -->
+    <!--================= Golden membership Section =================-->
+    <section class="newsletter">
+        <div class="container">
+            <h2> Do you want to be a golden member</h2>
+            <p>Get E-mail updates about our latest products and special offers customized only for you.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!--================= Footer =================-->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum, eveniet! Ducimus atque sapiente
+                        itaque reprehenderit obcaecati sit modi, ut asperiores?</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Female</a></li>
+                        <li><a href="#">Male</a></li>
+                        <li><a href="#">Unisex</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Search</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright &copy; E-commerce Poject. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My E-commerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            position: absolute;
+            /* Make the header float above the slider */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10;
+            /* Ensure it stays above the slider */
+            background-color: transparent;
+            /* Transparent background */
+            box-shadow: none;
+            /* Remove shadow */
+            transition: background-color 0.3s ease;
+            /* Smooth transition for background color */
+        }
+
+        header.scrolled {
+            background-color: rgba(0, 0, 0, 0.8);
+            /* Add a semi-transparent background when scrolling */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            /* Add shadow when scrolled */
+        }
+
+        .header-top {
+            background-color: transparent;
+            padding: 10px 0;
+            font-size: 14px;
+        }
+
+        .header-top-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-social a {
+            margin-left: 15px;
+        }
+
+        .header-main {
+            padding: 20px 0;
+        }
+
+        .header-main-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .logo span {
+            color: #e65540;
+        }
+
+        .main-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .main-menu li {
+            margin-left: 30px;
+            position: relative;
+        }
+
+        .main-menu li a {
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .main-menu li a:hover {
+            color: #e65540;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-icons a {
+            margin-left: 20px;
+            font-size: 18px;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #e65540;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /*=================== Slider Section===================== */
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #000;
+            opacity: 0;
+            transform: scale(1.05);
+            transition: opacity 1s ease, transform 1s ease;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 1;
+        }
+
+        .slide h2 {
+            font-size: 3rem;
+            animation: slideInUp 1s forwards;
+        }
+
+        .slide p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            animation: fadeIn 1.5s forwards;
+        }
+
+        .slide a {
+            display: inline-block;
+            background: #e65540;
+            padding: 12px 30px;
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            animation: fadeIn 2s forwards;
+        }
+
+        @keyframes slideInUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .slider-nav {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0.5;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            opacity: 1;
+            background: #e65540;
+        }
+
+        .slider-arrows {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 2;
+        }
+
+        .arrow {
+            font-size: 2rem;
+            color: #fff;
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 50%;
+            padding: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .slide h2 {
+                font-size: 2rem;
+            }
+
+            .slide p {
+                font-size: 1rem;
+            }
+
+            .slide a {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .category-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 300px;
+        }
+
+        .category-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            padding: 30px;
+            color: white;
+        }
+
+        .category-overlay h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .category-overlay p {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .product-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            padding: 10px 25px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #666;
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: #e65540;
+        }
+
+        .tab-btn.active:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 2px;
+            background-color: #e65540;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            height: 250px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #e65540;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .product-actions {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .product-card:hover .product-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .action-btn:hover {
+            background-color: #e65540;
+            color: white;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-category {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Add this to your existing CSS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-description,
+        .product-notes {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
+        /* For the tab filtering functionality */
+        .hidden {
+            display: none;
+        }
+
+        .product-price {
+            font-size: 18px;
+            font-weight: 700;
+            color: #e65540;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 14px;
+            margin-left: 5px;
+        }
+
+        /* Banner Section */
+        .banner {
+            padding: 80px 0;
+        }
+
+        .banner-content {
+            background-color: #e65540;
+            border-radius: 10px;
+            padding: 60px;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-content h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        }
+
+        /* Blog Section */
+        .blog {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .blog-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .blog-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .blog-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .blog-card:hover .blog-image img {
+            transform: scale(1.05);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-date {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .blog-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .blog-card:hover .blog-title {
+            color: #e65540;
+        }
+
+        .blog-excerpt {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            font-size: 14px;
+            font-weight: 500;
+            color: #e65540;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover .read-more i {
+            transform: translateX(5px);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            padding: 80px 0;
+            background-color: #333;
+            color: white;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+        }
+
+        .newsletter-btn {
+            background-color: #e65540;
+            color: white;
+            border: none;
+            padding: 0 30px;
+            border-radius: 0 30px 30px 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .newsletter-btn:hover {
+            background-color: #d04a36;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #aaa;
+            padding: 60px 0 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .footer-column p {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #e65540;
+        }
+
+        .footer-social {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background-color: #333;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .footer-social a:hover {
+            background-color: #e65540;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+
+            .categories-grid,
+            .products-grid,
+            .blog-grid,
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-main-content {
+                flex-direction: column;
+            }
+
+            .main-menu {
+                margin: 20px 0;
+            }
+
+            .header-icons {
+                margin-top: 20px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                border-radius: 30px;
+                margin-bottom: 10px;
+            }
+
+            .newsletter-btn {
+                border-radius: 30px;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+
+            .categories-grid,
+            .products-grid,
+            .blog-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h2 {
+                font-size: 32px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <div class="container header-top-content">
+                <div class="header-text">
+                    Free shipping for all orders over $50
+                </div>
+                <div class="header-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container header-main-content">
+            <a href="index.html" class="logo">My<span>E-commerce</span></a>
+
+            <!-- Updated Navigation Menu -->
+            <ul class="main-menu">
+                <li><a href="#">Registration</a></li>
+                <li><a href="#">My Account</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Products/Games</a></li>
+                <li><a href="#">Categories</a></li>
+            </ul>
+
+            <!-- Icons: Search + Login/Logout -->
+            <div class="header-icons">
+                <!-- Search -->
+                <div style="position: relative;">
+                    <input id="searchInput" type="text" placeholder="Search product/game..."
+                        style="padding: 6px 30px 6px 12px; border: 1px solid #ccc; border-radius: 20px;">
+                    <button onclick="searchProduct()"
+                        style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+                        <i class="fas fa-search" style="color: #e65540;"></i>
+                    </button>
+                </div>
+
+                <!-- Auth Buttons -->
+                <button id="loginBtn" onclick="toggleLogin(true)"
+                    style="margin-left: 15px; background: none; border: none; cursor: pointer;"><i
+                        class="fas fa-sign-in-alt"></i> Login</button>
+                <button id="logoutBtn" onclick="toggleLogin(false)"
+                    style="margin-left: 10px; display: none; background: none; border: none; cursor: pointer;"><i
+                        class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+        </div>
+
+    </header>
+    <!-- Slider Section -->
+    <section class="slider">
+        <div class="slide active"
+            style="background-image: url('https://preview.colorlib.com/theme/cozastore/images/slide-01.jpg');">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="#">Shop Now</a>
+        </div>
+        <div class="slide"
+            style="background-image: url('https://preview.colorlib.com/theme/cozastore/images/slide-02.jpg');">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="#">Explore</a>
+        </div>
+        <div class="slide"
+            style="background-image: url('https://preview.colorlib.com/theme/cozastore/images/slide-03.jpg');">
+            <h2>Lorem, ipsum.</h2>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <a href="#">Get Offer</a>
+        </div>
+        <div class="slider-arrows">
+            <div class="arrow" id="prevBtn"><i class="fas fa-chevron-left"></i></div>
+            <div class="arrow" id="nextBtn"><i class="fas fa-chevron-right"></i></div>
+        </div>
+        <div class="slider-nav">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+    </section>
+
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Shop by Category</h2>
+                <p>Browse our wide selection of products by category</p>
+                <h3><span data-count="6">0</span> Categories Available</h3>
+            </div>
+            <div class="categories-grid">
+                <div class="category-item">
+                    <img src="https://preview.colorlib.com/theme/cozastore/images/banner-01.jpg" alt="Women">
+                    <div class="category-overlay">
+                        <h3>Women</h3>
+                        <p>Spring 2023</p>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="https://preview.colorlib.com/theme/cozastore/images/banner-02.jpg" alt="Men">
+                    <div class="category-overlay">
+                        <h3>Men</h3>
+                        <p>Spring 2023</p>
+                    </div>
+                </div>
+                <div class="category-item">
+                    <img src="https://preview.colorlib.com/theme/cozastore/images/banner-03.jpg" alt="Accessories">
+                    <div class="category-overlay">
+                        <h3>Accessories</h3>
+                        <p>New Trend</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Perfumes</h2>
+                <p>Our premium collection of luxury fragrances</p>
+            </div>
+            <div class="product-tabs">
+                <button class="tab-btn active">All</button>
+                <button class="tab-btn">Women</button>
+                <button class="tab-btn">Men</button>
+                <button class="tab-btn">Unisex</button>
+            </div>
+            <div class="products-grid">
+                <!-- Products will be dynamically inserted here by JavaScript -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://preview.colorlib.com/theme/cozastore/images/product-01.jpg" alt="Product">
+                        <span class="product-badge">New</span>
+                        <div class="product-actions">
+                            <a href="#" class="action-btn"><i class="fas fa-heart"></i></a>
+                            <a href="#" class="action-btn"><i class="fas fa-shopping-cart"></i></a>
+                            <a href="#" class="action-btn"><i class="fas fa-eye"></i></a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Women</div>
+                        <h3 class="product-title">Esprit Ruffle Shirt</h3>
+                        <div class="product-price">$16.64 <span class="old-price">$20.00</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <div class="container">
+            <div class="banner-content">
+                <div class="banner-pattern"></div>
+                <h2>Summer Collection</h2>
+                <p>Get ready for summer with our exclusive collection of stylish and comfortable outfits. Limited time
+                    offer!</p>
+                <a href="#" class="shop-now-btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Blog</h2>
+                <p>Stay updated with our latest news and fashion tips</p>
+            </div>
+            <div class="blog-grid">
+                <!-- Blog Post 1 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://preview.colorlib.com/theme/cozastore/images/blog-01.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">May 12, 2023</div>
+                        <h3 class="blog-title">Black Friday Guide: Best Sales & Discount Codes</h3>
+                        <p class="blog-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                            scelerisque aliquam odio et faucibus.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 2 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://preview.colorlib.com/theme/cozastore/images/blog-02.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">May 5, 2023</div>
+                        <h3 class="blog-title">The White Sneakers Nearly Every Fashion Girl Owns</h3>
+                        <p class="blog-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                            scelerisque aliquam odio et faucibus.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Blog Post 3 -->
+                <div class="blog-card">
+                    <div class="blog-image">
+                        <img src="https://preview.colorlib.com/theme/cozastore/images/blog-03.jpg" alt="Blog Post">
+                    </div>
+                    <div class="blog-content">
+                        <div class="blog-date">April 28, 2023</div>
+                        <h3 class="blog-title">New York SS 2018 Street Style: Annina Mislin</h3>
+                        <p class="blog-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+                            scelerisque aliquam odio et faucibus.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Subscribe to our Newsletter</h2>
+            <p>Get E-mail updates about our latest shop and special offers.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>About Us</h3>
+                    <p>CozaStore is a premium fashion e-commerce template perfect for your online clothing store. We
+                        provide high quality products for fashion lovers.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Women</a></li>
+                        <li><a href="#">Men</a></li>
+                        <li><a href="#">Shoes</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Bags</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Search</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright &copy; 2023 CozaStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Tabs ---
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                showToast(`Filtered by: ${btn.textContent}`);
+            });
+        });
+
+        // --- Login / Logout ---
+        function toggleLogin(isLogin) {
+            const loginBtn = document.getElementById('loginBtn');
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (isLogin) {
+                loginBtn.style.display = 'none';
+                logoutBtn.style.display = 'inline-block';
+                showToast('Logged in successfully!');
+            } else {
+                loginBtn.style.display = 'inline-block';
+                logoutBtn.style.display = 'none';
+                showToast('Logged out successfully!');
+            }
+        }
+
+        // --- Product/Game Search ---
+        function searchProduct() {
+            const value = document.getElementById('searchInput').value.trim();
+            if (value) {
+                showToast(`Searching for "${value}"...`);
+            } else {
+                showToast("Please enter a product or game name.");
+            }
+        }
+
+        // --- Toast System ---
+        function showToast(msg) {
+            const toast = document.createElement('div');
+            toast.innerText = msg;
+            toast.style.cssText = `
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e65540;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+          `;
+            document.body.appendChild(toast);
+            requestAnimationFrame(() => toast.style.opacity = '1');
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 400);
+            }, 2500);
+        }
+
+        // --- Animated Counter (for category or products section) ---
+        function animateCounters() {
+            const counters = document.querySelectorAll('[data-count]');
+            counters.forEach(counter => {
+                const target = +counter.dataset.count;
+                let current = 0;
+                const increment = Math.ceil(target / 40);
+                const updateCount = () => {
+                    current += increment;
+                    if (current > target) current = target;
+                    counter.textContent = current;
+                    if (current < target) requestAnimationFrame(updateCount);
+                };
+                updateCount();
+            });
+        }
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+
+        // --- Smooth Scroll to Anchors ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // --- Autofocus search on "/" keypress ---
+        document.addEventListener('keydown', e => {
+            if (e.key === '/') {
+                e.preventDefault();
+                document.getElementById('searchInput')?.focus();
+            }
+        });
+
+        // --- Newsletter Submit with Animation ---
+        document.querySelector('.newsletter-form')?.addEventListener('submit', e => {
+            e.preventDefault();
+            showToast('Subscribed successfully!');
+            e.target.reset();
+            const btn = e.target.querySelector('.newsletter-btn');
+            btn.innerHTML = '✔ Subscribed!';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = 'Subscribe';
+                btn.disabled = false;
+            }, 3000);
+        });
+
+        // --- Product card hover expansion (JS assisted effect) ---
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'scale(1.03)';
+                card.style.zIndex = '10';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+                card.style.zIndex = '1';
+            });
+        });
+
+        // --- Page Entrance Animation ---
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            requestAnimationFrame(() => {
+                document.body.style.opacity = '1';
+            });
+
+            animateCounters(); // Trigger any counter animations on load
+        });
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let current = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                dots[i].classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                    dots[i].classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            current = (current + 1) % slides.length;
+            showSlide(current);
+        }
+
+        function prevSlide() {
+            current = (current - 1 + slides.length) % slides.length;
+            showSlide(current);
+        }
+
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 6000);
+        }
+
+        function stopSlider() {
+            clearInterval(slideInterval);
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                stopSlider();
+                current = i;
+                showSlide(current);
+                startSlider();
+            });
+        });
+
+        nextBtn.addEventListener('click', () => {
+            stopSlider();
+            nextSlide();
+            startSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            stopSlider();
+            prevSlide();
+            startSlider();
+        });
+
+        startSlider();
+
+        // Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.querySelector('.slider').addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.querySelector('.slider').addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                stopSlider();
+                nextSlide();
+                startSlider();
+            }
+            if (touchEndX > touchStartX + 50) {
+                stopSlider();
+                prevSlide();
+                startSlider();
+            }
+        }
+        // Function to fetch and display perfumes
+        async function fetchAndDisplayPerfumes() {
+            try {
+                // Fetch the perfumes data
+                const response = await fetch('dataSet.json');
+                const data = await response.json();
+                const perfumes = data.perfumes;
+
+                // Get the products grid container
+                const productsGrid = document.querySelector('.products-grid');
+
+                // Clear existing products (except the first one which we'll use as template)
+                productsGrid.innerHTML = '';
+
+                // Create product cards for each perfume
+                // Sort perfumes by price in descending order
+                const sortedPerfumes = perfumes.sort((a, b) => b.price - a.price);
+
+                // Select only the top 4 most expensive perfumes
+                const topPerfumes = sortedPerfumes.slice(0, 4);
+
+                topPerfumes.forEach(perfume => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.innerHTML = `
+      <div class="product-image">
+        <img src="${perfume.image || 'https://via.placeholder.com/300x300?text=Perfume'}" alt="${perfume.name}">
+        ${perfume.price < 100 ? '<span class="product-badge">Sale</span>' : ''}
+        <div class="product-actions">
+          <a href="#" class="action-btn"><i class="fas fa-heart"></i></a>
+          <a href="#" class="action-btn"><i class="fas fa-shopping-cart"></i></a>
+          <a href="#" class="action-btn"><i class="fas fa-eye"></i></a>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="product-category">${perfume.brand}</div>
+        <h3 class="product-title">${perfume.name}</h3>
+        <div class="product-price">$${perfume.price.toFixed(2)}</div>
+        <div class="product-description" style="display:none">${perfume.description}</div>
+        <div class="product-notes" style="display:none">${perfume.notes}</div>
+      </div>
+    `;
+                    productsGrid.appendChild(productCard);
+                });
+
+
+                // Update the counter in the categories section
+                const categoryCounter = document.querySelector('[data-count]');
+                if (categoryCounter) {
+                    categoryCounter.dataset.count = perfumes.length;
+                    animateCounters(); // Update the counter animation
+                }
+
+            } catch (error) {
+                console.error('Error loading perfumes:', error);
+                showToast('Error loading products. Please try again later.');
+            }
+        }
+
+        // Call the function when the page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchAndDisplayPerfumes();
+
+            // Your existing DOMContentLoaded code
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.8s ease';
+            requestAnimationFrame(() => {
+                document.body.style.opacity = '1';
+            });
+            animateCounters();
+        });
+
+        // Update the search function to search through perfumes
+        async function searchProduct() {
+            const value = document.getElementById('searchInput').value.trim().toLowerCase();
+            if (!value) {
+                showToast("Please enter a product name.");
+                return;
+            }
+
+            try {
+                const response = await fetch('dataSet.json');
+                const data = await response.json();
+                const matchingPerfumes = data.perfumes.filter(perfume =>
+                    perfume.name.toLowerCase().includes(value) ||
+                    perfume.brand.toLowerCase().includes(value) ||
+                    perfume.notes.toLowerCase().includes(value)
+                );
+
+                if (matchingPerfumes.length > 0) {
+                    showToast(`Found ${matchingPerfumes.length} matching perfumes`);
+                    // Here you could display the matching perfumes in a modal or filtered view
+                } else {
+                    showToast(`No perfumes found matching "${value}"`);
+                }
+            } catch (error) {
+                console.error('Error searching perfumes:', error);
+                showToast('Error searching products. Please try again later.');
+            }
+        }
+        // Add this to your existing JavaScript
+        document.querySelectorAll('.product-tabs .tab-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                // Remove active class from all buttons
+                document.querySelectorAll('.product-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+        
+                const genderFilter = btn.textContent === 'All' ? '' : btn.textContent;
+        
+                try {
+                    const response = await fetch('dataSet.json');
+                    const data = await response.json();
+                    let filteredPerfumes = data.perfumes;
+        
+                    if (genderFilter) {
+                        // Filter perfumes by gender
+                        filteredPerfumes = data.perfumes.filter(perfume =>
+                            perfume.gender.toLowerCase() === genderFilter.toLowerCase()
+                        );
+                    } else {
+                        // For "All" section, sort by price and select the top 4
+                        filteredPerfumes = data.perfumes
+                            .sort((a, b) => b.price - a.price) // Sort by price (descending)
+                            .slice(0, 4); // Take the top 4
+                    }
+        
+                    const productsGrid = document.querySelector('.products-grid');
+                    productsGrid.innerHTML = '';
+        
+                    filteredPerfumes.forEach(perfume => {
+                        const productCard = document.createElement('div');
+                        productCard.className = 'product-card';
+                        productCard.innerHTML = `
+                            <div class="product-image">
+                                <img src="${perfume.image || 'https://via.placeholder.com/300x300?text=Perfume'}" alt="${perfume.name}">
+                                ${perfume.price < 100 ? '<span class="product-badge">Sale</span>' : ''}
+                                <div class="product-actions">
+                                    <a href="#" class="action-btn"><i class="fas fa-heart"></i></a>
+                                    <a href="#" class="action-btn"><i class="fas fa-shopping-cart"></i></a>
+                                    <a href="#" class="action-btn"><i class="fas fa-eye"></i></a>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div class="product-category">${perfume.brand}</div>
+                                <h3 class="product-title">${perfume.name}</h3>
+                                <div class="product-price">$${perfume.price.toFixed(2)}</div>
+                                <div class="product-description" style="display:none">${perfume.description}</div>
+                                <div class="product-notes" style="display:none">${perfume.notes}</div>
+                            </div>
+                        `;
+                        productsGrid.appendChild(productCard);
+                    });
+        
+                    showToast(`Showing ${filteredPerfumes.length} ${genderFilter || 'top 4'} perfumes`);
+        
+                } catch (error) {
+                    console.error('Error filtering perfumes:', error);
+                    showToast('Error filtering products. Please try again later.');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
