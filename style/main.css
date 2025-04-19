@@ -106,7 +106,28 @@ header.scrolled {
     position: relative;
 }
 
-.cart-count {
+/* .cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #e65540;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+.icon-cart {
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+}
+
+.icon-cart span {
     position: absolute;
     top: -8px;
     right: -8px;
@@ -120,8 +141,88 @@ header.scrolled {
     align-items: center;
     justify-content: center;
 }
+.cartTab {
+    width: 24%;
+    background-color: #353432;
+    color: #eee;
+    position: fixed;
+    top: 0;
+    right: -400px;
+    z-index: 1000;
+    bottom: 0;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: .5s;
+}
 
+body.showCart .cartTab {
+    right: 0;
+}
 
+.cartTab h1 {
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.cartTab .btn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cartTab button {
+    background-color: #E8BC0E;
+    border: none;
+    font-family: Poppins;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cartTab .close {
+    background-color: #eee;
+}
+
+.listCart .item img {
+    width: 100%;
+}
+
+.listCart .item {
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+.listCart .quantity span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+}
+
+.listCart .quantity span:nth-child(2) {
+    background-color: transparent;
+    color: #eee;
+    cursor: auto;
+}
+
+.listCart .item:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.listCart {
+    overflow: auto;
+}
+
+.listCart::-webkit-scrollbar {
+    width: 0;
+}
 /*=================== Slider Section===================== */
 .slider {
     position: relative;

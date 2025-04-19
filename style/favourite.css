@@ -1,0 +1,11 @@
+/* Favorites Section */
+.favorites {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.favorites h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+}

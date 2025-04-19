@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Categories | My E-commerce</title>
+    <title>About Us - Perfume Shop</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./style/categories.css">
+    <link rel="stylesheet" href="./style/aboutUs.css">
 </head>
 <body>
-
-    <header>
-        <div class="header-top">
-            <div class="container header-top-content">
-                <div class="header-text">
+    <nav>
+        <div class="nav-top">
+            <div class="container nav-top-content">
+                <div class="nav-text" style="color: #fff;">
                     Free shipping for all orders over $50
                 </div>
-                <div class="header-social">
+                <div class="nav-social">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -23,21 +22,23 @@
                 </div>
             </div>
         </div>
-        <div class="container header-main-content">
+        <div class="container nav-main-content">
             <a href="main.html" class="logo">My<span>E-commerce</span></a>
 
-           
+            <!--=============== Nav =================-->
             <ul class="main-menu">
                 <li><a href="register.html">Registration</a></li>
                 <li><a href="#">My Account</a></li>
                 <li><a href="./aboutUs.html">About Us</a></li>
                 <li><a href="./contact.html">Contact Us</a></li>
-                <li><a href="./products.html">Products</a></li>
+                <li><a href="#">Products</a></li>
                 <li><a href="./categories.html">Categories</a></li>
             </ul>
 
-                        <div class="header-icons">
-               <div style="position: relative;">
+            <!--================= Icons: Search + Login/Logout ================= -->
+            <div class="nav-icons">
+                <!-- Search -->
+                <div style="position: relative;">
                     <input id="searchInput" type="text" placeholder="Search product/game..."
                         style="padding: 6px 30px 6px 12px; border: 1px solid #ccc; border-radius: 20px;">
                     <button onclick="searchProduct()"
@@ -46,7 +47,7 @@
                     </button>
                 </div>
 
-
+                <!--================= Auth Buttons =================-->
                 <button id="loginBtn" onclick="toggleLogin(true)"
                     style="margin-left: 15px; background: none; border: none; cursor: pointer;"><i
                         class="fas fa-sign-in-alt"></i> Login</button>
@@ -60,33 +61,115 @@
             </div>
         </div>
 
-    </header>
+    </nav>
 
-    
-    <section class="products">
-        <div class="container">
-            <div class="product-tabs">
-                <button class="tab-btn active">All</button>
-                <button class="tab-btn">Women</button>
-                <button class="tab-btn">Men</button>
-                <button class="tab-btn">Unisex</button>
-            </div>
-            <div class="products-grid" id="productsGrid">
-                
-            </div>
-        </div>
-    </section>
-     <!-- Cart Tab -->
-     <div class="cartTab">
-        <h1>Shopping Cart</h1>
-        <div class="listCart"></div>
-        <div class="btn">
-            <button class="close">CLOSE</button>
-            <button class="checkOut">Check Out</button>
+<main class="main-content">
+    <div class="background-container">
+        <img src="./img/perfume.jpg" alt="Background Image" class="background-image">
+        <div class="overlay"></div>
+
+        
+        <div class="text-above-image">
+            <h1 class="page-title">About Us</h1>
+            <p class="description">
+                Welcome to Perfume Direct, your ultimate destination for luxury fragrances. We offer a wide range of high-quality perfumes from top brands, ensuring you find the perfect scent for every occasion.
+            </p>
         </div>
     </div>
 
+    
+    <div class="container">
+        
+</main>
 
+            
+            <div class="deal-section">
+                
+                <div class="deal-info">
+                    <h2 class="deal-title">How We Deal With Our Clients.</h2>
+                </div>
+
+            
+                <div class="deal-text">
+                    <p>
+                        At Perfume Direct, we prioritize customer satisfaction above all else. Our team is dedicated to providing personalized service, fast shipping, and hassle-free returns. Whether you're shopping online or in-store, we ensure a seamless experience tailored to your needs.
+                    </p>
+                    
+                      <a href="./contact.html"><button class="contact-btn"> Contact Us <span>&rarr;</span>
+                    </button>
+                    </a> 
+                </div>
+            </div>
+            <div class="new-section">
+                
+                <div class="new-image">
+                    <img src="./img/collection.jpg" alt="Perfume Image" class="new-img">
+                </div>
+            
+            
+                <div class="new-content">
+                    <h2 class="new-title">Discover Our Exclusive Collection</h2>
+                    <p class="new-description">
+                        Explore a wide range of luxury fragrances crafted with the finest ingredients. From classic scents to modern blends, we have something for everyone.
+                    </p>
+                    <a href="#"><button class="read-more-btn">Read More <span>&rarr;</span></button></a>
+                </div>
+            </div>
+            
+<section class="team-section">
+    <h2 class="team-title">Our Team</h2>
+    <div class="team-container">
+    
+        <div class="team-card">
+            <img src="./img/sama.jpg" alt="Team Member 1" class="team-image">
+            <h3 class="team-name">Sama Ahmed </h3>
+            <p class="team-role">Frontend</p>
+        </div>
+
+        
+        <div class="team-card">
+            <img src="./img/shahd.jpg" alt="Team Member 2" class="team-image">
+            <h3 class="team-name">Shahd Elgendy</h3>
+            <p class="team-role">Frontend</p>
+        </div>
+
+        
+        <div class="team-card">
+            <img src="./img/basmala.jpg" alt="Team Member 3" class="team-image">
+            <h3 class="team-name">Basmala Elmasry</h3>
+            <p class="team-role">Frontend</p>
+        </div>
+
+    
+        <div class="team-card">
+            <img src="./img/hussien.jpg" alt="Team Member 4" class="team-image">
+            <h3 class="team-name">Hussien Mahmoud </h3>
+            <p class="team-role">Frontend</p>
+        </div>
+
+        
+        <div class="team-card">
+            <img src="./img/ramadan.jpg" alt="Team Member 5" class="team-image">
+            <h3 class="team-name">Ramadan Walid</h3>
+            <p class="team-role">Frontend</p>
+        </div>
+    </div>
+</section>
+
+        </div>
+        
+
+</section>
+ <!-- Cart Tab -->
+ <div class="cartTab">
+    <h1>Shopping Cart</h1>
+    <div class="listCart"></div>
+    <div class="btn">
+        <button class="close">CLOSE</button>
+        <button class="checkOut">Check Out</button>
+    </div>
+</div>
+    </main>
     <!--================= Golden membership Section =================-->
     <section class="newsletter">
         <div class="container">
@@ -98,9 +181,9 @@
             </form>
         </div>
     </section>
-    
-     <!--================= Footer =================-->
-     <footer>
+
+    <!--================= Footer =================-->
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
@@ -148,7 +231,6 @@
             </div>
         </div>
     </footer>
-
-    <script src="./js/categories.js"></script>
+    <script src="./js/aboutUS.js"></script>
 </body>
 </html>

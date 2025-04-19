@@ -1,0 +1,405 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #fff;
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: #EEEEEE;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header Styles */
+header {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header-top {
+    background-color: #333;
+    padding: 10px 0;
+    font-size: 14px;
+    color: white;
+}
+
+.header-top-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-social a {
+    margin-left: 15px;
+    color: white;
+}
+
+.header-main-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.logo span {
+    color: #e65540;
+}
+
+.main-menu {
+    display: flex;
+    list-style: none;
+}
+
+.main-menu li {
+    margin-left: 30px;
+    position: relative;
+}
+
+.main-menu li a {
+    font-weight: 500;
+    transition: color 0.3s;
+    color: #333;
+}
+
+.main-menu li a:hover {
+    color: #e65540;
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+}
+
+/* Products Section */
+.products {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.section-title p {
+    color: #666;
+    font-size: 16px;
+}
+
+.product-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.tab-btn {
+    padding: 10px 25px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #666;
+    position: relative;
+}
+
+.tab-btn.active {
+    color: #e65540;
+}
+
+.tab-btn.active:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background-color: #e65540;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.product-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+.product-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #e65540;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.product-actions {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.product-card:hover .product-actions {
+    opacity: 1;
+}
+
+.action-btn {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e65540;
+    margin: 0 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.action-btn:hover {
+    background-color: #e65540;
+    color: white;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-category {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #e65540;
+}
+
+/* Cart Tab Styles */
+.icon-cart {
+    position: relative;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.icon-cart span {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #e65540;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartTab {
+    width: 24%;
+    background-color: #353432;
+    color: #eee;
+    position: fixed;
+    top: 0;
+    right: -400px;
+    z-index: 1000;
+    bottom: 0;
+    display: grid;
+    grid-template-rows: 70px 1fr 70px;
+    transition: .5s;
+}
+
+body.showCart .cartTab {
+    right: 0;
+}
+
+.cartTab h1 {
+    padding: 20px;
+    margin: 0;
+    font-weight: 300;
+}
+
+.cartTab .btn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.cartTab button {
+    background-color: #E8BC0E;
+    border: none;
+    font-family: Poppins;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.cartTab .close {
+    background-color: #eee;
+}
+
+.listCart .item img {
+    width: 100%;
+}
+
+.listCart .item {
+    display: grid;
+    grid-template-columns: 70px 150px 50px 1fr;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+.listCart .quantity span {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    color: #555;
+    cursor: pointer;
+}
+
+.listCart .quantity span:nth-child(2) {
+    background-color: transparent;
+    color: #eee;
+    cursor: auto;
+}
+
+.listCart .item:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.listCart {
+    overflow: auto;
+}
+
+.listCart::-webkit-scrollbar {
+    width: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .header-main-content {
+        flex-direction: column;
+    }
+    
+    .main-menu {
+        margin: 20px 0;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .main-menu li {
+        margin: 0 10px 10px;
+    }
+}
+
+@media (max-width: 576px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .cartTab {
+        width: 100%;
+    }
+}

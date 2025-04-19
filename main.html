@@ -32,10 +32,11 @@
             <ul class="main-menu">
                 <li><a href="register.html">Registration</a></li>
                 <li><a href="#">My Account</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Products</a></li>
+                <li><a href="./aboutUs.html">About Us</a></li>
+                <li><a href="./contact.html">Contact Us</a></li>
+                <li><a href="products.html">Products</a></li>
                 <li><a href="./categories.html">Categories</a></li>
+                <li><a href="./favourite.html">favourite</a></li>
             </ul>
 
             <!--================= Icons: Search + Login/Logout ================= -->
@@ -57,6 +58,10 @@
                 <button id="logoutBtn" onclick="toggleLogin(false)"
                     style="margin-left: 10px; display: none; background: none; border: none; cursor: pointer;"><i
                         class="fas fa-sign-out-alt"></i> Logout</button>
+            </div>
+            <div class="icon-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span>0</span>
             </div>
         </div>
 
@@ -152,26 +157,28 @@
             <div class="products-grid">
                 <div class="product-card">
                     <div class="product-image">
-                        <img src="https://preview.colorlib.com/theme/cozastore/images/product-01.jpg" alt="Product">
                         <span class="product-badge">New</span>
                         <div class="product-actions">
-                            <a href="#" class="action-btn"><i class="fas fa-heart"></i></a>
+                            <a href="./favourite.html" class="favorites-link" style="margin-left: 15px; color: #e65540; font-size: 18px;">
+                                <i class="fas fa-heart"></i> Favorites
+                            </a>
                             <a href="#" class="action-btn"><i class="fas fa-shopping-cart"></i></a>
                             <a href="#" class="action-btn"><i class="fas fa-eye"></i></a>
                         </div>
-                    </div>
-                    <div class="product-info">
-                        <div class="product-category">Women</div>
-                        <h3 class="product-title">Esprit Ruffle Shirt</h3>
-                        <div class="product-price">$16.64 <span class="old-price">$20.00</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-
-
+     <!-- Cart Tab -->
+     <div class="cartTab">
+        <h1>Shopping Cart</h1>
+        <div class="listCart"></div>
+        <div class="btn">
+            <button class="close">CLOSE</button>
+            <button class="checkOut">Check Out</button>
+        </div>
+    </div>
     <!--================= Feeds Section =================-->
     <section class="blog">
         <div class="container">
@@ -224,8 +231,7 @@
             </div>
         </div>
     </section>
-<!-- Do you want to be a golden member -->
- <!-- Get E-mail updates about our latest products and special offers customized only for you. -->
+
     <!--================= Golden membership Section =================-->
     <section class="newsletter">
         <div class="container">

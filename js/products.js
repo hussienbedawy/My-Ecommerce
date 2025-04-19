@@ -1,121 +1,11 @@
-document.addEventListener('DOMContentLoaded', () => {
-    fetchAndDisplayPerfumes();
-    setupTabFilters();
-    animatePageEntrance();
-});
-
-
-async function fetchAndDisplayPerfumes(filter = '') {
-    try {
-        const response = await fetch('/DB/dataSet.json');
-        const data = await response.json();
-        let perfumes = data.perfumes;
-
-        
-        if (filter && filter !== 'All') { 
-            perfumes = perfumes.filter(p => 
-                p.gender.toLowerCase() === filter.toLowerCase()
-            );
-        } else {
-            
-            perfumes = perfumes.sort((a, b) => b.price - a.price).slice(0, 12);
-        }
-
-        renderProducts(perfumes);
-        showToast(`Showing ${perfumes.length} ${filter || 'featured'} perfumes`);
-
-    } catch (error) {
-        console.error('Error loading products:', error);
-        showToast('Error loading products. Please try again later.');
-    }
-}
-
-
-function renderProducts(perfumes) {
-    const productsGrid = document.querySelector('.products-grid');
-    productsGrid.innerHTML = '';
-
-    perfumes.forEach(perfume => {
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
-        productCard.innerHTML = `
-            <div class="product-image">
-                <img src="${perfume.image || 'https://via.placeholder.com/300x300?text=Perfume'}" 
-                     alt="${perfume.name}">
-                ${perfume.price < 100 ? '<span class="product-badge">Sale</span>' : ''}
-                <div class="product-actions">
-                    <a href="#" class="action-btn"><i class="fas fa-heart"></i></a>
-                    <a href="#" class="action-btn"><i class="fas fa-shopping-cart"></i></a>
-                    <a href="#" class="action-btn"><i class="fas fa-eye"></i></a>
-                </div>
-            </div>
-            <div class="product-info">
-                <div class="product-category">${perfume.brand}</div>
-                <h3 class="product-title">${perfume.name}</h3>
-                <div class="product-price">$${perfume.price.toFixed(2)}</div>
-            </div>
-        `;
-        productsGrid.appendChild(productCard);
-    });
-}
-
-
-function setupTabFilters() {
-    document.querySelectorAll('.product-tabs .tab-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-           
-            document.querySelectorAll('.tab-btn').forEach(b => 
-                b.classList.remove('active')
-            );
-            btn.classList.add('active');
-            
-            
-            fetchAndDisplayPerfumes(btn.textContent);
-        });
-    });
-}
-
-// Toast notification
-function showToast(msg) {
-    const toast = document.createElement('div');
-    toast.className = 'toast-notification';
-    toast.textContent = msg;
-    document.body.appendChild(toast);
-    
-    setTimeout(() => {
-        toast.remove();
-    }, 3000);
-}
-
-
-function animatePageEntrance() {
-    document.body.style.opacity = '0';
-    document.body.style.transition = 'opacity 0.8s ease';
-    requestAnimationFrame(() => {
-        document.body.style.opacity = '1';
-    });
-}
-
-
-document.addEventListener('click', (e) => {
-    if (e.target.closest('.action-btn .fa-shopping-cart')) {
-        e.preventDefault();
-        showToast('Product added to cart!');
-    }
-    
-    if (e.target.closest('.action-btn .fa-heart')) {
-        e.preventDefault();
-        showToast('Added to favorites!');
-    }
-});
-
-// cart logic
+let listProductHTML = document.querySelector('.listProduct');
 let listCartHTML = document.querySelector('.listCart');
 let iconCart = document.querySelector('.icon-cart');
 let iconCartSpan = document.querySelector('.icon-cart span');
 let body = document.querySelector('body');
 let closeCart = document.querySelector('.close');
-
+let productsGrid = document.getElementById('productsGrid');
+let perfumes = [];
 let cart = [];
 
 iconCart.addEventListener('click', () => {
@@ -132,6 +22,8 @@ const initApp = async () => {
         const data = await response.json();
         perfumes = data.perfumes;
 
+        // Add products to HTML
+        addDataToHTML();
 
         // Load cart data from localStorage
         if (localStorage.getItem('cart')) {
@@ -139,10 +31,79 @@ const initApp = async () => {
             addCartToHTML();
         }
 
+        // Set up tab filtering
+        setupProductTabs();
     } catch (error) {
         console.error('Error fetching product data:', error);
     }
 };
+
+const addDataToHTML = () => {
+    // Clear existing products
+    productsGrid.innerHTML = '';
+
+    // Add new products
+    if (perfumes.length > 0) {
+        perfumes.forEach(perfume => {
+            let newProduct = document.createElement('div');
+            newProduct.className = 'product-card';
+            newProduct.dataset.id = perfume.id;
+            newProduct.dataset.gender = perfume.gender.toLowerCase();
+            newProduct.innerHTML = `
+                <div class="product-image">
+                    <img src="${perfume.image || 'https://via.placeholder.com/300x300?text=Perfume'}" alt="${perfume.name}">
+                    ${perfume.price < 100 ? '<span class="product-badge">Sale</span>' : ''}
+                    <div class="product-actions">
+                        <a href="#" class="action-btn"><i class="fas fa-heart"></i></a>
+                        <a href="#" class="action-btn addCart"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="#" class="action-btn"><i class="fas fa-eye"></i></a>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">${perfume.brand}</div>
+                    <h3 class="product-title">${perfume.name}</h3>
+                    <div class="product-price">$${perfume.price.toFixed(2)}</div>
+                </div>
+            `;
+            productsGrid.appendChild(newProduct);
+        });
+
+        // Add event listeners to new cart buttons
+        document.querySelectorAll('.addCart').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                let id_product = button.closest('.product-card').dataset.id;
+                addToCart(id_product);
+            });
+        });
+    }
+};
+
+const setupProductTabs = () => {
+    document.querySelectorAll('.product-tabs .tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            document.querySelectorAll('.product-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const genderFilter = btn.textContent === 'All' ? '' : btn.textContent.toLowerCase();
+            filterProducts(genderFilter);
+        });
+    });
+};
+
+const filterProducts = (gender) => {
+    const allProducts = document.querySelectorAll('.product-card');
+    allProducts.forEach(product => {
+        if (gender === '' || product.dataset.gender === gender) {
+            product.style.display = 'block';
+        } else {
+            product.style.display = 'none';
+        }
+    });
+};
+
 const addToCart = (product_id) => {
     let positionThisProductInCart = cart.findIndex((value) => value.product_id == product_id);
     if (cart.length <= 0) {
@@ -207,6 +168,7 @@ listCartHTML.addEventListener('click', (event) => {
 const changeQuantityCart = (product_id, type) => {
     let positionItemInCart = cart.findIndex((value) => value.product_id == product_id);
     if (positionItemInCart >= 0) {
+        let info = cart[positionItemInCart];
         switch (type) {
             case 'plus':
                 cart[positionItemInCart].quantity += 1;
@@ -225,5 +187,5 @@ const changeQuantityCart = (product_id, type) => {
     addCartToMemory();
 };
 
-
+// Initialize the app
 initApp();
