@@ -8,7 +8,9 @@
 
 body {
     background-color: #fff;
+    font-weight: border;
     color: #333;
+    font-weight: bolder;
 }
 
 a {
@@ -105,21 +107,6 @@ header.scrolled {
     font-size: 18px;
     position: relative;
 }
-
-/* .cart-count {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: #e65540;
-    color: white;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
 
 .icon-cart {
     position: relative;
@@ -444,6 +431,7 @@ body.showCart .cartTab {
 .products {
     padding: 80px 0;
     background-color: #f8f9fa;
+    
 }
 
 .products .container {
@@ -564,7 +552,6 @@ body.showCart .cartTab {
     background-color: #e65540;
     color: white;
 }
-
 .product-info {
     padding: 20px;
 }
@@ -813,20 +800,20 @@ body.showCart .cartTab {
     transform: translateX(5px);
 }
 
-/* Newsletter Section */
-.newsletter {
+/* membership Section */
+.membership {
     padding: 80px 0;
     background-color: #333;
     color: white;
     text-align: center;
 }
 
-.newsletter h2 {
+.membership h2 {
     font-size: 36px;
     margin-bottom: 20px;
 }
 
-.newsletter p {
+.membership p {
     font-size: 16px;
     color: #aaa;
     margin-bottom: 30px;
@@ -835,13 +822,13 @@ body.showCart .cartTab {
     margin-right: auto;
 }
 
-.newsletter-form {
+.membership-form {
     display: flex;
     max-width: 500px;
     margin: 0 auto;
 }
 
-.newsletter-input {
+.membership-input {
     flex: 1;
     padding: 15px 20px;
     border: none;
@@ -849,7 +836,7 @@ body.showCart .cartTab {
     font-size: 16px;
 }
 
-.newsletter-btn {
+.membership-btn {
     background-color: #e65540;
     color: white;
     border: none;
@@ -860,7 +847,7 @@ body.showCart .cartTab {
     transition: background-color 0.3s;
 }
 
-.newsletter-btn:hover {
+.membership-btn:hover {
     background-color: #d04a36;
 }
 
@@ -972,16 +959,16 @@ footer {
         margin-top: 20px;
     }
 
-    .newsletter-form {
+    .membership-form {
         flex-direction: column;
     }
 
-    .newsletter-input {
+    .membership-input {
         border-radius: 30px;
         margin-bottom: 10px;
     }
 
-    .newsletter-btn {
+    .membership-btn {
         border-radius: 30px;
         padding: 15px;
     }

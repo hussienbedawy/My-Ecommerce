@@ -12,7 +12,7 @@
         <div class="nav-top">
             <div class="container nav-top-content">
                 <div class="nav-text">
-                    Free shipping for all orders over $50
+                    
                 </div>
                 <div class="nav-social">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -23,16 +23,18 @@
             </div>
         </div>
         <div class="container nav-main-content">
-            <a href="main.html" class="logo">My<span>E-commerce</span></a>
+          <a href="main.html" class="logo">Perfume <span>Direct</span></a>
 
             <!--=============== Nav =================-->
             <ul class="main-menu">
+              <li><a href="main.html">Home</a></li>
                 <li><a href="register.html">Registration</a></li>
-                <li><a href="#">My Account</a></li>
+                <li><a href="./myAccount.html">My Account</a></li>
                 <li><a href="./aboutUs.html">About Us</a></li>
                 <li><a href="./contact.html">Contact Us</a></li>
-                <li><a href="#">Products</a></li>
+                <li><a href="./myAccount.html">Products</a></li>
                 <li><a href="./categories.html">Categories</a></li>
+                <li><a href="./favourite.html">Favourite</a></li>
             </ul>
 
             <!--================= Icons: Search + Login/Logout ================= -->
@@ -49,10 +51,10 @@
 
                 <!--================= Auth Buttons =================-->
                 <button id="loginBtn" onclick="toggleLogin(true)"
-                    style="margin-left: 15px; background: none; border: none; cursor: pointer;"><i
+                    style="margin-left: 15px; background: none; border: none; cursor: pointer; color:#fff;"><i
                         class="fas fa-sign-in-alt"></i> Login</button>
                 <button id="logoutBtn" onclick="toggleLogin(false)"
-                    style="margin-left: 10px; display: none; background: none; border: none; cursor: pointer;"><i
+                    style="margin-left: 10px; display: none; background: none; border: none; cursor: pointer; color:#fff;"><i
                         class="fas fa-sign-out-alt"></i> Logout</button>
             </div>
             <div class="icon-cart">
@@ -89,7 +91,7 @@
               </div>
               <div class="info-block">
                 <p class="info-label">Email</p>
-                <p class="info-value">info@perfumedirect.com</p>
+                <p class="info-value">hussienbedawy@gmail.com</p>
               </div>
             </div>
           </div>
@@ -107,16 +109,17 @@
 </div>
   </main>
 
-  <section class="newsletter">
-    <div class="container">
-      <h2>Do you want to be a golden member</h2>
+<!--================= Golden membership Section =================-->
+<section class="membership">
+  <div class="container">
+      <h2> Do you want to be a golden member</h2>
       <p>Get E-mail updates about our latest products and special offers customized only for you.</p>
-      <form class="newsletter-form">
-        <input type="email" placeholder="Enter your email address" required class="newsletter-input" />
-        <button type="submit" class="newsletter-btn">Subscribe</button>
+      <form class="membership-form">
+          <input type="email" placeholder="Enter your email address" class="membership-input" required>
+          <button type="submit" class="membership-btn">Subscribe</button>
       </form>
-    </div>
-  </section>
+  </div>
+</section>
 
   <footer>
     <div class="container">
@@ -161,10 +164,12 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 E-commerce Project. All rights reserved.</p>
+        <p>&copy; 2025 Perfume Direct. All rights reserved.</p>
       </div>
     </div>
   </footer>
+  <script src="./js/auth.js"></script>
+  <script src="./js/contactscript.js"></script>
+
 </body>
 </html>
-<script src="./js/contactscript.js"></script>

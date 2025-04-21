@@ -1,4 +1,255 @@
 /* Favorites Section */
+/* ===== Reset & Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background-color: #fff;
+    font-weight: border;
+    color: #333;
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  /* Header Styles */
+header {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.header-top {
+  background-color: #333;
+  padding: 10px 0;
+  font-size: 14px;
+  color: white;
+}
+
+.header-top-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-social a {
+  margin-left: 15px;
+  color: white;
+}
+
+.header-main-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+}
+
+.logo span {
+  color: #e65540;
+}
+
+.main-menu {
+  display: flex;
+  list-style: none;
+}
+
+.main-menu li {
+  margin-left: 30px;
+  position: relative;
+}
+
+.main-menu li a {
+  font-weight: 500;
+  transition: color 0.3s;
+  color: #333;
+}
+
+.main-menu li a:hover {
+  color: #e65540;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+}
+
+/* Cart Tab Styles */
+.icon-cart {
+  position: relative;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.icon-cart span {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #e65540;
+  color: white;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cartTab {
+  width: 24%;
+  background-color: #353432;
+  color: #eee;
+  position: fixed;
+  top: 0;
+  right: -400px;
+  z-index: 1000;
+  bottom: 0;
+  display: grid;
+  grid-template-rows: 70px 1fr 70px;
+  transition: .5s;
+}
+
+body.showCart .cartTab {
+  right: 0;
+}
+
+.cartTab h1 {
+  padding: 20px;
+  margin: 0;
+  font-weight: 300;
+}
+
+.cartTab .btn {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.cartTab button {
+  background-color: #E8BC0E;
+  border: none;
+  font-family: Poppins;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cartTab .close {
+  background-color: #eee;
+}
+
+.listCart .item img {
+  width: 100%;
+}
+
+.listCart .item {
+  display: grid;
+  grid-template-columns: 70px 150px 50px 1fr;
+  gap: 10px;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+  color: white;
+}
+
+.listCart .quantity span {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+  color: #555;
+  cursor: pointer;
+}
+
+.listCart .quantity span:nth-child(2) {
+  background-color: transparent;
+  color: #eee;
+  cursor: auto;
+}
+
+.listCart .item:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.listCart {
+  overflow: auto;
+}
+
+.listCart::-webkit-scrollbar {
+  width: 0;
+}
+  /* ===== Section Title ===== */
+  .favorites h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #e65540;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  /* ===== Grid Layout ===== */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 30px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  /* ===== Product Card ===== */
+  .product-card {
+    background-color: white;
+    border: 2px solid #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 4px 12px rgba(255, 127, 80, 0.2);
+    transition: transform 0.3s ease;
+    text-align: center;
+  }
+  
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .product-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  .product-card h3 {
+    margin: 15px 0 10px;
+    color: #e65540;
+    font-size: 20px;
+  }
+  
+  .product-card p {
+    font-size: 16px;
+    color: #444;
+  }
+  
+  /* ===== Favorite Heart Icon ===== */
+  .product-card .fa-heart {
+    color: #e65540;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+  
 .favorites {
     padding: 80px 0;
     background-color: #f8f9fa;
@@ -8,4 +259,131 @@
     text-align: center;
     font-size: 36px;
     margin-bottom: 40px;
+}
+.fas.fa-heart.added {
+    color: red;
+}
+/* membership Section */
+.membership {
+  padding: 80px 0;
+  background-color: #333;
+  color: white;
+  text-align: center;
+}
+
+.membership h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.membership p {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.membership-form {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.membership-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 30px 0 0 30px;
+  font-size: 16px;
+}
+
+.membership-btn {
+  background-color: #e65540;
+  color: white;
+  border: none;
+  padding: 0 30px;
+  border-radius: 0 30px 30px 0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.membership-btn:hover {
+  background-color: #d04a36;
+}
+
+/* Footer */
+footer {
+  background-color: #222;
+  color: #aaa;
+  padding: 60px 0 0;
+}
+
+.footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.footer-column h3 {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-column p {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.footer-links li {
+  margin-bottom: 10px;
+  list-style: none;
+}
+
+.footer-links a {
+  font-size: 14px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #e65540;
+}
+
+.footer-social {
+  display: flex;
+  margin-top: 20px;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: background-color 0.3s;
+}
+
+.footer-social a:hover {
+  background-color: #e65540;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
 }

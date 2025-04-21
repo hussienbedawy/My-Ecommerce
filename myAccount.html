@@ -4,9 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorites</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/myAccount.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="./style/favourite.css">
 </head>
 
 <body>
@@ -14,7 +19,7 @@
         <div class="header-top">
             <div class="container header-top-content">
                 <div class="header-text">
-              
+
                 </div>
                 <div class="header-social">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -35,9 +40,9 @@
                 <li><a href="./contact.html">Contact Us</a></li>
                 <li><a href="products.html">Products</a></li>
                 <li><a href="/categories.html">Categories</a></li>
-                <li><a href="./favourite.html">favourite</a></li>
+                <li><a href="./favourite.html">Favourite</a></li>
             </ul>
- <!--================= Icons: Search + Login/Logout ================= -->
+            <!--================= Icons: Search + Login/Logout ================= -->
             <div class="header-icons">
                 <div style="position: relative;">
                     <input id="searchInput" type="text" placeholder="Search product/game..."
@@ -47,7 +52,7 @@
                         <i class="fas fa-search" style="color: #e65540;"></i>
                     </button>
                 </div>
-               
+
 
                 <!--================= Auth Buttons =================-->
                 <button id="loginBtn" onclick="toggleLogin(true)"
@@ -57,21 +62,32 @@
                     style="margin-left: 10px; display: none; background: none; border: none; cursor: pointer;"><i
                         class="fas fa-sign-out-alt"></i> Logout</button>
             </div>
-                <div class="icon-cart">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>0</span>
-                </div>
+            <div class="icon-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <span>0</span>
             </div>
+        </div>
         </div>
     </header>
-    <section class="favorites">
-        <div class="container">
-            <h2>Your Favorites</h2>
-            <div class="products-grid" id="favoritesGrid">
-                <!-- Favorite products will be dynamically added here -->
-            </div>
+    <div class="profile-container">
+        <div class="decoration decoration-1">✧</div>
+        <div class="decoration decoration-2">✦</div>
+
+        <h2>My Luxe Profile</h2>
+
+        <div class="info-group" id="user-info">
+            <!-- User info will be injected here -->
         </div>
-    </section>
+
+        <div class="section-title">My Recent Purchases</div>
+        <div class="order-list" id="order-list">
+            <!-- Orders will be rendered here -->
+        </div>
+        <div class="section-title">My Favorite Products</div>
+        <div class="favorites-list" id="favorites-list">
+            <!-- Favorite products will be rendered here -->
+        </div>
+    </div>
     <!-- Cart Tab -->
     <div class="cartTab">
         <h1>Shopping Cart</h1>
@@ -81,9 +97,8 @@
             <button class="checkOut">Check Out</button>
         </div>
     </div>
-
-     <!--================= Golden membership Section =================-->
-     <section class="membership">
+    <!--================= Golden membership Section =================-->
+    <section class="membership">
         <div class="container">
             <h2> Do you want to be a golden member</h2>
             <p>Get E-mail updates about our latest products and special offers customized only for you.</p>
@@ -142,9 +157,7 @@
         </div>
     </footer>
     <script src="./js/auth.js"></script>
-    <script src="./js/favourite.js"></script>
-    <script src="./js/app.js"></script>
-
+    <script src="./js/myAccount.js"></script>
 </body>
 
 </html>

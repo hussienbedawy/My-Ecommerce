@@ -7,6 +7,7 @@
   
   body {
     font-family: 'Arial', sans-serif;
+    font-weight: border;
     background-color: #111;
     color: #fff;
     overflow-x: hidden;
@@ -18,10 +19,10 @@
   
 /* nav Styles */
 nav {
-    position: absolute; /* or remove this line entirely */
+    position: absolute; 
     width: 100%;
 
-    background-color: transparent; /* dark background for readability */
+    background-color: transparent;
     z-index: 100;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   }
@@ -381,127 +382,127 @@ body.showCart .cartTab {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
   }
   
-  /* Newsletter Section */
-.newsletter {
-    padding: 80px 0;
-    background-color: #333;
-    color: white;
-    text-align: center;
+/* membership Section */
+.membership {
+  padding: 80px 0;
+  background-color: #333;
+  color: white;
+  text-align: center;
 }
 
-.newsletter h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.membership h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-.newsletter p {
-    font-size: 16px;
-    color: #aaa;
-    margin-bottom: 30px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+.membership p {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.newsletter-form {
-    display: flex;
-    max-width: 500px;
-    margin: 0 auto;
+.membership-form {
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
-.newsletter-input {
-    flex: 1;
-    padding: 15px 20px;
-    border: none;
-    border-radius: 30px 0 0 30px;
-    font-size: 16px;
+.membership-input {
+  flex: 1;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 30px 0 0 30px;
+  font-size: 16px;
 }
 
-.newsletter-btn {
-    background-color: #e65540;
-    color: white;
-    border: none;
-    padding: 0 30px;
-    border-radius: 0 30px 30px 0;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
+.membership-btn {
+  background-color: #e65540;
+  color: white;
+  border: none;
+  padding: 0 30px;
+  border-radius: 0 30px 30px 0;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.newsletter-btn:hover {
-    background-color: #d04a36;
+.membership-btn:hover {
+  background-color: #d04a36;
 }
 
 /* Footer */
 footer {
-    background-color: #222;
-    color: #aaa;
-    padding: 60px 0 0;
+  background-color: #222;
+  color: #aaa;
+  padding: 60px 0 0;
 }
 
 .footer .container {
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 30px;
-    margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
 }
 
 .footer-column h3 {
-    color: white;
-    font-size: 18px;
-    margin-bottom: 20px;
-    font-weight: 600;
+  color: white;
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: 600;
 }
 
 .footer-column p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 .footer-links li {
-    margin-bottom: 10px;
-    list-style: none;
+  margin-bottom: 10px;
+  list-style: none;
 }
 
 .footer-links a {
-    font-size: 14px;
-    transition: color 0.3s;
+  font-size: 14px;
+  transition: color 0.3s;
 }
 
 .footer-links a:hover {
-    color: #e65540;
+  color: #e65540;
 }
 
 .footer-social {
-    display: flex;
-    margin-top: 20px;
+  display: flex;
+  margin-top: 20px;
 }
 
 .footer-social a {
-    width: 40px;
-    height: 40px;
-    background-color: #333;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    transition: background-color 0.3s;
+  width: 40px;
+  height: 40px;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  transition: background-color 0.3s;
 }
 
 .footer-social a:hover {
-    background-color: #e65540;
+  background-color: #e65540;
 }
 
 .footer-bottom {
-    border-top: 1px solid #333;
-    padding: 20px 0;
-    text-align: center;
-    font-size: 14px;
+  border-top: 1px solid #333;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
 }

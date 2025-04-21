@@ -1,37 +1,116 @@
+// Load user info from localStorage
+function loadUserInfo() {
+  const userInfoEl = document.getElementById("user-info") 
+  const users = JSON.parse(localStorage.getItem("users")) || [] 
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault()  
-        const targetId = this.getAttribute('href').substring(1)  
-        const targetElement = document.getElementById(targetId) 
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start' 
-            }) 
-        }
-    }) 
-}) 
+  if (users.length === 0) {
+    userInfoEl.innerHTML = '<p class="empty">No user data found.</p>' 
+    return 
+  }
 
+  const user = users[users.length - 1]  // Last registered user
 
-document.querySelectorAll('.contact-btn, .read-more-btn, .subscribe-btn').forEach(button => {
-    button.addEventListener('mouseenter', () => {
-        button.style.transform = 'scale(1.05)'  
-    }) 
-    button.addEventListener('mouseleave', () => {
-        button.style.transform = 'scale(1)'  
-    }) 
-}) 
+  const fields = {
+    "Full Name": user.firstName + " " + user.lastName,
+    "Email": user.email,
+    "Country": user.country || "Not specified",
+    "Address": user.address || "Not specified",
+    "Member Since": new Date().toLocaleDateString('en-US', { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric' 
+    }),
+    "Loyalty Status": "Gold Tier Member"
+  } 
 
+  userInfoEl.innerHTML = Object.entries(fields)
+    .map(([label, value]) => `
+      <div class="info-box">
+        <div class="label">${label}</div>
+        <div class="value">${value}</div>
+      </div>
+    `)
+    .join("") 
+}
 
-document.querySelectorAll('.shop-image, .new-img, .team-image').forEach(image => {
-    image.addEventListener('mouseenter', () => {
-        image.style.transform = 'scale(1.1)'  
-        image.style.transition = 'transform 0.3s ease' 
-    }) 
-    image.addEventListener('mouseleave', () => {
-        image.style.transform = 'scale(1)'  
-    }) 
+// Load My Orders from cart + perfumes DB
+async function loadOrders() {
+  const orderListEl = document.getElementById("order-list") 
+  const cart = JSON.parse(localStorage.getItem("cart")) || [] 
+
+  if (cart.length === 0) {
+    orderListEl.innerHTML = '<p class="empty">Your collection awaits. No orders yet.</p>' 
+    return 
+  }
+
+  try {
+    const res = await fetch('/DB/dataSet.json') 
+    const data = await res.json() 
+    const perfumes = data.perfumes 
+
+    const ordersHtml = cart.map(item => {
+      const product = perfumes.find(p => p.id == item.product_id) 
+      if (!product) return '' 
+
+      return `
+        <div class="order-item">
+          <img src="${product.image}" alt="${product.name}" />
+          <div class="order-details">
+            <div class="product-name">${product.name}</div>
+            <div class="product-price">${item.quantity} × ${product.price.toFixed(2)}</div>
+          </div>
+        </div>
+      ` 
+    }).join("") 
+
+    orderListEl.innerHTML = ordersHtml || '<p class="empty">No matching products found in DB.</p>' 
+
+  } catch (err) {
+    console.error("Error fetching products:", err) 
+    orderListEl.innerHTML = '<p class="empty">Error loading your collection. Please try again later.</p>' 
+  }
+}
+async function loadfavorites() {
+  const favoritesListEl = document.getElementById("favorites-list")  // Add a container for favorites in your HTML
+  const favorites = JSON.parse(localStorage.getItem("favorites")) || [] 
+
+  if (favorites.length === 0) {
+    favoritesListEl.innerHTML = '<p class="empty">No favorite products yet.</p>' 
+    return 
+  }
+
+  try {
+    const res = await fetch('/DB/dataSet.json') 
+    const data = await res.json() 
+    const perfumes = data.perfumes 
+
+    const favoritesHtml = favorites.map(favoriteId => {
+      const product = perfumes.find(p => p.id == favoriteId) 
+      if (!product) return '' 
+
+      return `
+        <div class="favorite-item">
+          <img src="${product.image}" alt="${product.name}" />
+          <div class="favorite-details">
+            <div class="product-name">${product.name}</div>
+            <div class="product-price">$${product.price.toFixed(2)}</div>
+          </div>
+        </div>
+      ` 
+    }).join("") 
+
+    favoritesListEl.innerHTML = favoritesHtml || '<p class="empty">No matching products found in DB.</p>' 
+
+  } catch (err) {
+    console.error("Error fetching products:", err) 
+    favoritesListEl.innerHTML = '<p class="empty">Error loading your favorites. Please try again later.</p>' 
+  }
+}
+// Initialize on load
+document.addEventListener('DOMContentLoaded', () => {
+  loadUserInfo() 
+  loadOrders() 
+  loadfavorites()
 }) 
 // cart logic
 let listCartHTML = document.querySelector('.listCart') 
