@@ -30,8 +30,8 @@ function toggleLogin(isLogin) {
         logoutBtn.style.display = 'none' 
         // Save login state
         showToast('Logged in successfully!') 
-        window.location.href = 'main.html' 
-        localStorage.setItem('isLoggedIn', 'true')  // Redirect to main.html
+        window.location.href = 'index.html' 
+        localStorage.setItem('isLoggedIn', 'true')  // Redirect to index.html
     }
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true' 
     if (isLoggedIn) {

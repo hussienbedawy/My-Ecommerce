@@ -63,6 +63,6 @@
         alert("Registration successful!") 
         document.querySelector("form").reset() 
         document.getElementById("submit-button").disabled = true 
-        window.location.href = "main.html" 
+        window.location.href = "index.html" 
         return false 
     }

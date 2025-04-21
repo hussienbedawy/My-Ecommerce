@@ -10,7 +10,7 @@ function loginUser() {
         alert(`Welcome back, ${user.firstName}!`) 
         localStorage.setItem('isLoggedIn', 'true')  // Save login state
         showToast('Logged in successfully!') 
-        window.location.href = 'main.html' 
+        window.location.href = 'index.html' 
     } else {
         alert("Invalid email or password. Please try again.") 
     }
