@@ -38,25 +38,32 @@
             </ul>
 
             <div class="header-icons">
-                <!-- Search -->
-                <div style="position: relative;">
-                    <input id="searchInput" type="text" placeholder="Search product/game..."
-                        style="padding: 6px 30px 6px 12px; border: 1px solid #ccc; border-radius: 20px;">
-                    <button onclick="searchProduct()"
-                        style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
-                        <i class="fas fa-search" style="color: #e65540;"></i>
-                    </button>
+               
+                
+                <div class="header-icons">
+                    <!-- Search -->
+                    <div style="position: relative;">
+                        <input id="searchInput" type="text" placeholder="Search product/game..."
+                            style="padding: 6px 30px 6px 12px; border: 1px solid #ccc; border-radius: 20px;">
+                        <button onclick="searchProduct()"
+                            style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer;">
+                            <i class="fas fa-search" style="color: #e65540;"></i>
+                        </button>
+                    </div>
+    
+                    <!--================= Auth Buttons =================-->
+                    <button id="loginBtn" onclick="toggleLogin(true)"
+                        style="margin-left: 15px; background: none; border: none; cursor: pointer; color:#fff;"><i
+                            class="fas fa-sign-in-alt"></i> Login</button>
+                    <button id="logoutBtn" onclick="toggleLogin(false)"
+                        style="margin-left: 10px; display: none; background: none; border: none; cursor: pointer; color:#fff;"><i
+                            class="fas fa-sign-out-alt"></i> Logout</button>
                 </div>
-
-                <!--================= Auth Buttons =================-->
-                <button id="loginBtn" onclick="toggleLogin(true)"
-                    style="margin-left: 15px; background: none; border: none; cursor: pointer; "><i
-                        class="fas fa-sign-in-alt"></i> Login</button>
-                <button id="logoutBtn" onclick="toggleLogin(false)"
-                    style="margin-left: 10px; display: none; background: none; border: none; cursor: pointer; "><i
-                        class="fas fa-sign-out-alt"></i> Logout</button>
             </div>
-            
+            <div class="icon-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>0</span>
+                </div>
         </div>
     </header>
 
