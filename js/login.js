@@ -8,8 +8,7 @@ function loginUser() {
 
     if (user) {
         alert(`Welcome back, ${user.firstName}!`) 
-        localStorage.setItem('isLoggedIn', 'true')  // Save login state
-        showToast('Logged in successfully!') 
+        localStorage.setItem('isLoggedIn', 'true')  
         window.location.href = 'index.html' 
     } else {
         alert("Invalid email or password. Please try again.") 
@@ -18,7 +17,4 @@ function loginUser() {
     return false  // Prevent form submit
 }
 
-// Toast (placeholder)
-function showToast(message) {
-    console.log("Toast:", message)  // Replace with your UI toast
-}
+

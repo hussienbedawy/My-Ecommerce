@@ -12,7 +12,6 @@ function checkLoginState() {
 
 function toggleLogin(isLogin) {
     if (isLogin) {
-        localStorage.setItem('isLoggedIn', 'true') 
         window.location.href = 'login.html' 
         showToast('Logged in successfully!') 
     } else {

@@ -202,14 +202,14 @@ body.showCart .cartTab {
   
   /* ===== Grid Layout ===== */
   .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    display: flex;
+    justify-content: center;
     gap: 30px;
     padding: 40px;
-    max-width: 1200px;
+    max-width: 1300px;
     margin: auto;
   }
-  
+
   /* ===== Product Card ===== */
   .product-card {
     background-color: white;
